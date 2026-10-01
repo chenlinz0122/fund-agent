@@ -33,3 +33,6 @@ Thumbs.db
 
 # Node (if frontend build added later)
 node_modules/
+
+# 第三方二进制参考件，不入库（本地保留）
+docs/reference/*.rar
