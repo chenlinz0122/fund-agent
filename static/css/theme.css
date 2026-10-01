@@ -1,0 +1,301 @@
+/*
+ * 主题与设计令牌覆盖层
+ *
+ * 加载顺序在 index.html 内联样式之后，只覆盖、不重写：
+ * 内联样式负责结构，这里负责质感与明暗主题。
+ *
+ * 参考：akquant-lwc 的复盘报告（明暗双主题 + 单文件离线报告 +
+ * 指标/净值/回撤/热力图分区）与常见金融仪表盘做法
+ * （等宽数字、右对齐数值、sticky 表头、语义色而非装饰色）。
+ */
+
+/* ========== 暗色主题令牌 ========== */
+:root[data-theme="dark"] {
+    --primary: #58a6ff;
+    --primary-light: #152744;
+    --success: #3fb950;
+    --danger: #f85149;
+    --warning: #d29922;
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #e6edf3;
+    --text-secondary: #8d96a0;
+    --border: #262e39;
+    --shadow: 0 1px 3px rgba(0, 0, 0, .6), 0 8px 24px rgba(0, 0, 0, .35);
+    /* A 股习惯不变：红涨绿跌，暗色下提高饱和度保证对比度 */
+    --color-up: #ff6b6b;
+    --color-down: #35c05e;
+    --surface-2: #1c232c;
+}
+
+:root { --surface-2: #f1f3f5; }
+
+/* ========== 基础排版 ========== */
+body {
+    font-feature-settings: "tnum" 1, "cv01" 1;   /* 表格数字等宽，列不会跳 */
+    transition: background .18s ease, color .18s ease;
+    -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { letter-spacing: -.01em; }
+::selection { background: var(--primary); color: #fff; }
+
+/* 滚动条 */
+* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+*::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); background-clip: content-box; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* ========== 表单控件（原生控件在暗色下会露白底） ========== */
+input[type="text"], input[type="number"], input[type="search"], select, textarea {
+    background: var(--card); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 10px; font: inherit; transition: border-color .15s, background .15s;
+}
+input:hover, select:hover, textarea:hover { border-color: color-mix(in srgb, var(--primary) 45%, var(--border)); }
+input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+select option { background: var(--card); color: var(--text); }
+::placeholder { color: var(--text-secondary); opacity: .8; }
+label { color: var(--text-secondary); }
+
+/* ========== 顶栏 ========== */
+.header {
+    backdrop-filter: saturate(180%) blur(8px);
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+}
+.header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; flex: 1 1 auto; min-width: 0; }
+.header h1 { font-size: 19px; white-space: nowrap; }
+/* 顶栏空间不够时先让位：状态文字与 chip-llm 信息重复，窄屏直接隐藏 */
+@media (max-width: 1180px) { #status { display: none; } }
+@media (max-width: 980px) { #chip-breaker { display: none; } }
+@media (max-width: 820px) { #chip-data { display: none; } }
+
+.chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 999px;
+    border: 1px solid var(--border); background: var(--surface-2);
+    font-size: 12px; color: var(--text-secondary); white-space: nowrap;
+}
+.chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-secondary); }
+.chip.ok .dot { background: var(--success); box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 22%, transparent); }
+.chip.warn { color: var(--warning); border-color: color-mix(in srgb, var(--warning) 45%, var(--border)); }
+.chip.warn .dot { background: var(--warning); }
+.chip.err { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, var(--border)); }
+.chip.err .dot { background: var(--danger); }
+
+.icon-btn {
+    width: 32px; height: 32px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    cursor: pointer; font-size: 15px; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s, transform .1s;
+}
+.icon-btn:hover { background: var(--surface-2); }
+.icon-btn:active { transform: scale(.94); }
+
+/* ========== 标签页 ========== */
+.tabs { position: sticky; top: 65px; z-index: 99; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { border-radius: 8px 8px 0 0; padding: 10px 18px; }
+.tab.active { background: var(--surface-2); }
+
+/* ========== 卡片 ========== */
+.card {
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    transition: box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover { box-shadow: var(--shadow); }
+.card h3 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.card h3::before {
+    content: ""; width: 3px; height: 15px; border-radius: 2px; background: var(--primary);
+}
+.card h4 { color: var(--text-secondary); font-weight: 600; }
+
+/* ========== 表格 ========== */
+.table-wrapper { max-height: 560px; overflow: auto; border-radius: 8px; }
+.data-table { border-collapse: separate; border-spacing: 0; width: 100%; }
+.data-table th {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--card);
+    box-shadow: inset 0 -1px 0 var(--border);
+    color: var(--text-secondary); font-weight: 600; font-size: 12px;
+    text-transform: none; white-space: nowrap;
+}
+.data-table td { font-variant-numeric: tabular-nums; }
+.data-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+.data-table tbody tr { transition: background .12s; }
+.data-table tbody tr:hover { background: color-mix(in srgb, var(--primary) 9%, transparent); }
+.data-table td.num, .data-table td.is-num { text-align: right; font-variant-numeric: tabular-nums; }
+.data-table td.up { color: var(--color-up); }
+.data-table td.down { color: var(--color-down); }
+.data-table td.muted { color: var(--text-secondary); }
+
+/* 长基金名不再把行高撑爆：省略号 + 悬停看全文（title 由 ui-tweaks.js 补） */
+#funds-table td:nth-child(2), #funds-table th:nth-child(2) { max-width: 200px; }
+#funds-table td:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#funds-table th[onclick] { cursor: pointer; }
+#funds-table th[onclick]:hover { color: var(--primary); }
+#funds-table td:first-child { font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+
+/* 行内迷你走势条 */
+.spark { display: inline-block; vertical-align: middle; }
+.spark rect { fill: var(--primary); opacity: .75; }
+.spark rect.neg { fill: var(--color-down); }
+.spark rect.pos { fill: var(--color-up); }
+
+/* ========== 指标卡 ========== */
+.metric-card {
+    background: linear-gradient(180deg, var(--surface-2), color-mix(in srgb, var(--surface-2) 40%, var(--card)));
+    border: 1px solid var(--border);
+    transition: transform .12s ease, border-color .12s ease;
+}
+.metric-card:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--primary) 40%, var(--border)); }
+.metric-card .value { font-variant-numeric: tabular-nums; letter-spacing: -.5px; }
+
+/* ========== 按钮 ========== */
+.btn { position: relative; overflow: hidden; font-weight: 500; }
+.btn:focus-visible, .tab:focus-visible, .icon-btn:focus-visible,
+.quick-action:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--primary); outline-offset: 2px;
+}
+.btn[disabled] { opacity: .55; cursor: progress; }
+.btn-secondary { background: var(--card); }
+.btn-secondary:hover { background: var(--surface-2); }
+
+/* ========== 开关（LLM 启用等） ========== */
+.switch { position: relative; display: inline-block; width: 38px; height: 22px; flex: none; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch .slider {
+    position: absolute; inset: 0; cursor: pointer; border-radius: 999px;
+    background: var(--border); transition: background .18s;
+}
+.switch .slider::before {
+    content: ""; position: absolute; height: 16px; width: 16px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: transform .18s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+.switch input:checked + .slider { background: var(--primary); }
+.switch input:checked + .slider::before { transform: translateX(16px); }
+.switch input:focus-visible + .slider { outline: 2px solid var(--primary); outline-offset: 2px; }
+.tool-hint { font-size: 11px; color: var(--text-secondary); padding: 1px 6px; border-radius: 6px; background: var(--surface-2); }
+
+/* ========== 聊天 ========== */
+.chat-container { display: flex; flex-direction: column; }
+.chat-toolbar {
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px dashed var(--border);
+}
+.tool-group { display: flex; align-items: center; gap: 7px; font-size: 13px; }
+.chat-messages { background: var(--surface-2); border-radius: 10px; padding: 14px; }
+.message .bubble {
+    border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    line-height: 1.65; word-break: break-word;
+}
+.message.bot .bubble { background: var(--card); }
+.msg-meta {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
+    font-size: 11px; color: var(--text-secondary);
+}
+.msg-meta .tag {
+    padding: 1px 7px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2);
+}
+.msg-meta .tag.llm { color: var(--primary); border-color: color-mix(in srgb, var(--primary) 40%, var(--border)); }
+.msg-meta .tag.rules { color: var(--success); border-color: color-mix(in srgb, var(--success) 40%, var(--border)); }
+.msg-meta .tag.degraded { color: var(--warning); border-color: color-mix(in srgb, var(--warning) 45%, var(--border)); }
+
+/* ========== 结论条 ========== */
+.verdict { padding: 10px 12px; border-radius: 0 8px 8px 0; margin: 8px 0; font-size: 13px; border-left: 3px solid; }
+.verdict.ok { background: color-mix(in srgb, var(--success) 10%, transparent); border-color: var(--success); }
+.verdict.warn { background: color-mix(in srgb, var(--warning) 12%, transparent); border-color: var(--warning); }
+.verdict.bad { background: color-mix(in srgb, var(--danger) 10%, transparent); border-color: var(--danger); }
+
+/* ========== 加载骨架 ========== */
+.skeleton {
+    position: relative; overflow: hidden; background: var(--surface-2);
+    border-radius: 6px; color: transparent !important; pointer-events: none;
+}
+.skeleton::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--card) 70%, transparent), transparent);
+    animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+
+/* ========== 图表容器 ========== */
+.chart-container {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 6px;
+}
+:root[data-theme="dark"] .chart-container { background: #0f141b; }
+
+/* ========== 折叠区块 ========== */
+details.fold { border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; background: var(--card); }
+details.fold > summary {
+    cursor: pointer; padding: 10px 14px; font-size: 14px; font-weight: 600;
+    list-style: none; display: flex; align-items: center; gap: 8px;
+}
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary::before { content: "▸"; color: var(--text-secondary); transition: transform .15s; }
+details.fold[open] > summary::before { transform: rotate(90deg); }
+details.fold > .fold-body { padding: 0 14px 14px; }
+
+/* ========== 回到顶部 ========== */
+#to-top {
+    position: fixed; right: 22px; bottom: 22px; z-index: 250;
+    opacity: 0; transform: translateY(8px); pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    box-shadow: var(--shadow);
+}
+#to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+
+/* ========== 模拟盘 / 自训练面板 ========== */
+.hint-p { font-size: 13px; color: var(--text-secondary); margin: 0 0 12px; line-height: 1.7; }
+.muted { color: var(--text-secondary); font-weight: 400; font-size: 12px; }
+.check { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); cursor: pointer; }
+.check input { width: 15px; height: 15px; accent-color: var(--primary); cursor: pointer; }
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+.tag-chip { display: inline-block; margin: 1px 4px 1px 0; padding: 1px 7px; border-radius: 999px;
+            border: 1px solid var(--border); background: var(--surface-2); font-size: 11px; }
+.tag-chip.bad { color: var(--danger); border-color: color-mix(in srgb, var(--danger) 45%, var(--border)); }
+.chips-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.pa-list { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.pa-item {
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    padding: 9px 12px; border: 1px solid var(--border); border-radius: 10px;
+    cursor: pointer; font-size: 13px; background: var(--card); transition: border-color .15s, background .15s;
+}
+.pa-item:hover { border-color: color-mix(in srgb, var(--primary) 45%, var(--border)); }
+.pa-item.active { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 8%, var(--card)); }
+.pa-item .chip { margin-left: auto; }
+.two-col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.narrative { font-size: 13px; line-height: 1.8; padding: 10px 12px; border: 1px dashed var(--border);
+             border-radius: 8px; background: var(--surface-2); }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+    .main { padding: 14px; }
+    .header { padding: 12px 14px; }
+    .tabs { top: 57px; padding: 6px 10px 0; }
+    .tab { padding: 9px 12px; font-size: 13px; }
+    .metrics-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .metric-card .value { font-size: 19px; }
+    .chat-messages { max-height: 58vh; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .chart-container { height: 300px !important; }
+}
+
+/* ========== 打印（导出报告用） ========== */
+@media print {
+    .tabs, .header .status, .portfolio-input, .chat-input, #to-top, .toast { display: none !important; }
+    .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .view { display: block !important; }
+    body { background: #fff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,37 @@
+[
+ {
+  "id": "MuVwawPNik8",
+  "title": "量化交易 + 遗传算法：让 AI 自动进化策略！纯Vibe Coding的快速回测系统架构",
+  "len": "739",
+  "chapters": [],
+  "desc": "极简的规则，能在庞大算力中“逼”出极度复杂的顶级智慧。\n这期视频，我用 Go 语言在云端构建了一个冷酷的 GA（遗传算法）进化引擎，让千万个参数基因在 10 年的极端行情里互相厮杀。\n最终活下来的“蛊王”，会告诉我们什么是交易市场里的物理极限。\n\n附赠彩蛋：如何低成本解决 AI 写代码时的“幻觉”问题的？一定要看到后面的实战哦。\n\n时间戳：\n0:00 过往的错误\n0:36 把小做大 GA系统\n5:02 Vibe Coding：系统实战\n9:12 关于“过拟合”的另一种探讨\n\n进化系统文档：https://drive.google.com/file/d/1dZLZM6OtpvvDASBgvE-vnZMMTrD6pg4c/view?usp=sharing\n\n量化交易往期视频：\n第一期 手搓量化系统的真相：https://youtu.be/0lauzm8S8e4\n第二期 量化中的遗传进化体系：https://youtu.be/MuVwawPNik8\n第三期 化繁为简，删除K线：https://youtu.be/G8uLkGJCMRw\n第四期 降次，量化交易的极简美学：https://youtu.be/slgiNcfRISE\n第五期 量化中的噪声处理：https://youtu.be/GtMWZFgsQzc\n第六期 量化中的止盈止损：https://youtu.be/LVj0lYFDHfM\n\n⚠️ 免责声明：\n本视频仅作为 AI 编程与量化系统架构的技术分享与思路探讨，绝对不构成任何投资或理财建议。金融市场具有极高的风险，任何人都不应依赖本视频内容进行实际交易。盈亏自负，请对自己的钱包负责。\n\n📢 **关于【可乐AI实验室】:**\n这是一个 AI 技术落地频道。只分享经过实战验证的开发流、工具链和产品思维。内容源自我们公司的内部技术内训。\n\n**订阅频道，不错过下期内容：**\n\n#ai编程  #编程 #cursor #ai  #claude #sonnet #量化交易 #vibecoding #交易系统"
+ },
+ {
+  "id": "G8uLkGJCMRw",
+  "title": "化繁为简！删掉 K 线后，只需一天就能Vibe Coding出你的专属量化交易系统(纯Cursor实现)",
+  "len": "1029",
+  "chapters": [],
+  "desc": "不断嵌套 if-else，用各种形态和指标穷举市场的每一次波动，量化系统后期必然陷入长尾的状态过载。我的处理方式是：彻底删掉 K 线。\n本期视频，我将带你对技术指标祛魅，回归交易的第一性原理。并演示如何用 Vibe Coding，在一天内手搓出一个纯靠物理法则和 Sigmoid 函数驱动的极简量化引擎。\n\n⚠️重要！分享的plan和文档：https://drive.google.com/file/d/1pqmsSYl2A3pNMl9oOx_6I1QWjGer7j9q/view?usp=sharing\n\n往期教程：\n新手必看的零基础 Vibe Coding 系列：https://www.youtube.com/playlist?list=PLf3GrTqFzB-3z3cP_hzqaOxA36S1gpT-O\n\n时间戳：\n00:00 开篇\n00:40 化繁为简 数学抽离\n01:23 最悲观原则\n02:16 真实案例：跑了8年数据的策略，为什么跑不赢无脑定投？\n04:46 降维打击：彻底抛弃 K 线！用“求导”看清市场本质\n07:00 重要！！Sigmoid 动态天平：用1行数学公式，秒杀1000行 if-else\n11:28 Vibe Coding 时代：如何用 AI 一天构建你的量化引擎？\n15:57 X因素：AI局外人？\n\n量化交易往期视频：\n第一期 手搓量化系统的真相：https://youtu.be/0lauzm8S8e4\n第二期 量化中的遗传进化体系：https://youtu.be/MuVwawPNik8\n第三期 化繁为简，删除K线：https://youtu.be/G8uLkGJCMRw\n第四期 降次，量化交易的极简美学：https://youtu.be/slgiNcfRISE\n第五期 量化中的噪声处理：https://youtu.be/GtMWZFgsQzc\n第六期 量化中的止盈止损：https://youtu.be/LVj0lYFDHfM\n\n⚠️ 免责声明：\n本视频仅作为 AI 编程与量化系统架构的技术分享与思路探讨，绝对不构成任何投资或理财建议。金融市场具有极高的风险，任何人都不应依赖本视频内容进行实际交易。盈亏自负，请对自己的钱包负责。\n\n📢 **关于【可乐AI实验室】:**\n这是一个 AI 技术落地频道。只分享经过实战验证的开发流、工具链和产品思维。内容源自我们公司的内部技术内训。\n\n**订阅频道，不错过下期内容：**\n\n#ai编程  #编程 #cursor #ai  #claude #sonnet #量化交易 #vibecoding #交易系统 #零基础编程"
+ },
+ {
+  "id": "slgiNcfRISE",
+  "title": "放弃精确预测！降次求解：量化交易的极简美学",
+  "len": "904",
+  "chapters": [],
+  "desc": "这一期我想硬核地探索一下量化市场的数学交易美学。我从实际的做空期货策略的痛苦经历出发，解析了死盯“绝对价格”与“高次拟合”的缺陷。\n我试图通过引入微积分中的“泰勒展开”与“求导降次”思想，将混沌的金融市场降维成一阶导数（涨跌速度V）与二阶导数（势能加速度A）的物理运动。结合遗传算法（GA）捕捉隐蔽参数，并利用Sigmoid函数进行约束，最终构建出了一套【历史回测】很好看的极简交易闭环。\n需要明确告诉大家的是：因时间有限，目前只跑了回测，暂未实盘接入。\n\n时间戳：\n0:00 为什么做空与杠杆策略这么难做？\n2:46 破局！放弃精确解，用求导降次求近似值\n4:12 正向求解与“反解”的终极悖论\n6:06 泰勒展开与 V/A 的微分博弈\n9:35 灵魂拷问：是对 K 线求导，还是对泰勒求导？\n11:13 把 P（绝对价格）降维成 Boolean 开关\n13:00 终极武器：用 Sigmoid 约束高次疯狂\n14:00 数学的浪漫\n\n量化交易往期视频：\n第一期 手搓量化系统的真相：https://youtu.be/0lauzm8S8e4\n第二期 量化中的遗传进化体系：https://youtu.be/MuVwawPNik8\n第三期 化繁为简，删除K线：https://youtu.be/G8uLkGJCMRw\n第四期 降次，量化交易的极简美学：https://youtu.be/slgiNcfRISE\n第五期 量化中的噪声处理：https://youtu.be/GtMWZFgsQzc\n第六期 量化中的止盈止损：https://youtu.be/LVj0lYFDHfM\n\n⚠️ 免责声明：\n本视频仅作为 AI 编程与量化系统架构的技术分享与思路探讨，绝对不构成任何投资或理财建议。金融市场具有极高的风险，任何人都不应依赖本视频内容进行实际交易。盈亏自负，请对自己的钱包负责。\n\n📢 **关于【可乐AI实验室】:**\n这是一个 AI 技术落地频道。只分享经过实战验证的开发流、工具链和产品思维。内容源自我们公司的内部技术内训。\n\n**订阅频道，不错过下期内容：**\n\n#ai编程  #编程 #cursor #ai  #claude #sonnet #量化交易 #vibecoding #交易系统"
+ },
+ {
+  "id": "GtMWZFgsQzc",
+  "title": "回测猛如虎，因为你把“噪声”当成了规律！战胜过拟合的办法，就是成为别人的噪声",
+  "len": "881",
+  "chapters": [],
+  "desc": "回测猛如虎，实盘原地杵。为什么？因为你把历史里的“噪声”，当成了规律去拟合。\n上期视频我们用泰勒展开式拆解了 K 线，这期，我们深刻探讨一下如何去除量化策略中的“市场噪声”。\n💡 强烈建议结合上期视频一起食用，效果极佳！\n\n时间戳：\n0:00 回测猛如虎\n0:38 噪声的种类\n2:14 如何降噪？\n3:12 t怎样才足够小？\n5:18 V和A的取值范围\n8:17 为什么大周期“看起来”最准？\n9:34 对抗过拟合\n11:00 个人量化者的妥协\n13:25 数学带来的现实意义\n\n量化交易往期视频：\n第一期 手搓量化系统的真相：https://youtu.be/0lauzm8S8e4\n第二期 量化中的遗传进化体系：https://youtu.be/MuVwawPNik8\n第三期 化繁为简，删除K线：https://youtu.be/G8uLkGJCMRw\n第四期 降次，量化交易的极简美学：https://youtu.be/slgiNcfRISE\n第五期 量化中的噪声处理：https://youtu.be/GtMWZFgsQzc\n第六期 量化中的止盈止损：https://youtu.be/LVj0lYFDHfM\n\n⚠️ 免责声明：\n本视频仅作为 AI 编程与量化系统架构的技术分享与思路探讨，绝对不构成任何投资或理财建议。金融市场具有极高的风险，任何人都不应依赖本视频内容进行实际交易。盈亏自负，请对自己的钱包负责。\n\n📢 **关于【可乐AI实验室】:**\n这是一个 AI 技术落地频道。只分享经过实战验证的开发流、工具链和产品思维。内容源自我们公司的内部技术内训。\n\n**订阅频道，不错过下期内容：**\n\n#ai编程  #编程 #cursor #ai  #claude #sonnet #量化交易 #vibecoding #交易系统"
+ },
+ {
+  "id": "LVj0lYFDHfM",
+  "title": "Vibe Coding 差点翻车！我发现了一个量化做空的致命巨坑：怎么设置止盈止损？",
+  "len": "917",
+  "chapters": [],
+  "desc": "进场猛如虎，出场二百五。\n实盘用 50u 跑出了极其恐怖的胜率和收益，结果睡了一觉，因为平仓系统的崩盘，利润全吐出去了。这是我实盘vibe coding做空策略的量化开发遇到的超级大坑：止盈止损。\n\n⚠️重要！分享的平仓策略文档：https://drive.google.com/file/d/1HZHipJaR-tBVRQD_43oCu1MPBV0p4izz/view?usp=sharing\n\n时间戳：\n00:00 开篇\n00:43 泰勒展开式平仓的设想\n04:07 平仓设想的致命缺陷\n05:08 终极破局\n08:52 导函数与原函数对齐！\n9:11 平仓逻辑五条铁律\n14:12 多标的做空策略的特殊GA特性\n\n量化交易往期视频：\n第一期 手搓量化系统的真相：https://youtu.be/0lauzm8S8e4\n第二期 量化中的遗传进化体系：https://youtu.be/MuVwawPNik8\n第三期 化繁为简，删除K线：https://youtu.be/G8uLkGJCMRw\n第四期 降次，量化交易的极简美学：https://youtu.be/slgiNcfRISE\n第五期 量化中的噪声处理：https://youtu.be/GtMWZFgsQzc\n第六期 量化中的止盈止损：https://youtu.be/LVj0lYFDHfM\n\n⚠️ 免责声明：\n本视频仅作为 AI 编程与量化系统架构的技术分享与思路探讨，绝对不构成任何投资或理财建议。金融市场具有极高的风险，任何人都不应依赖本视频内容进行实际交易。盈亏自负，请对自己的钱包负责。\n\n📢 **关于【可乐AI实验室】:**\n这是一个 AI 技术落地频道。只分享经过实战验证的开发流、工具链和产品思维。内容源自我们公司的内部技术内训。\n\n**订阅频道，不错过下期内容：**\n\n#ai编程  #编程 #cursor #ai  #claude #sonnet #量化交易 #vibecoding #交易系统 #零基础编程"
+ }
+]
